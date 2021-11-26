@@ -24,13 +24,15 @@ echo -e "Installing brew\n"
 
 # Add font repo
 brew tap homebrew/cask-fonts
+# Add terraspace repo
+brew tap boltops-tools/software
 
 # Install ZSH and ohmyzsh
 brew install zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install CLI tools
-clitools="fzf golang python3 yq jq gpg kube-ps1 kubectl kubernetes-cli git vim curl wget kubectx pipenv tfenv docker colima neofetch wireguard-tools htop ssh-copy-id diff-so-fancy"
+clitools="fzf golang python3 yq jq gpg gsed kube-ps1 kubectl kubernetes-cli git vim curl wget kubectx pipenv tfenv terraspace docker colima neofetch wireguard-tools htop ssh-copy-id diff-so-fancy"
 installBrewCliPackages "${clitools}"
 
 # Install GUI tools
