@@ -34,7 +34,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 # Install CLI tools
 clitools="fzf golang python3 yq jq gpg gsed kube-ps1 kubectl kubernetes-cli git vim curl wget kubectx pipenv\
   pre-commit terraform-docs tflint tfsec coreutils checkov terrascan infracost\
-  tfenv terraspace docker colima neofetch wireguard-tools htop ssh-copy-id diff-so-fancy"
+  tfenv terraspace terraform-docs docker colima neofetch wireguard-tools htop ssh-copy-id diff-so-fancy"
 installBrewCliPackages "${clitools}"
 
 # Install GUI tools
