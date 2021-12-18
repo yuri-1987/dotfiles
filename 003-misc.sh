@@ -2,14 +2,15 @@
 
 # Create temp dir
 tempDir=$(mktemp -d)
+mkdir -p ~/.zsh/plugins
 
 # Install fzf
 $(brew --prefix)/opt/fzf/install
 
 # Install chroma for zsh plugin
-wget https://github.com/alecthomas/chroma/releases/download/v0.9.4/chroma-0.9.4-darwin-amd64.tar.gz -P "${tempDir}"
-tar -xf "${tempDir}"/chroma-0.9.4-darwin-amd64.tar.gz -C "${tempDir}"
-mv "${tempDir}"/chroma /usr/local/bin
+wget https://github.com/alecthomas/chroma/releases/download/v0.9.4/chroma-0.9.4-darwin-arm64.tar.gz -P "${tempDir}"
+tar -xf "${tempDir}"/chroma-0.9.4-darwin-arm64.tar.gz -C "${tempDir}"
+sudo mv "${tempDir}"/chroma /usr/local/bin/
 
 # Setup git
 git config --global core.excludesfile gitignore
@@ -28,7 +29,11 @@ git config --global color.diff.commit     "yellow bold"
 git config --global color.diff.old        "red bold"
 git config --global color.diff.new        "green bold"
 git config --global color.diff.whitespace "red reverse"
+git config --global user.name "yuri-1987"
+git config --global user.email "27512519+yuri-1987@users.noreply.github.com"
 
+# handle multi kube context
+cp misc/multi-kube.sh ~/.zsh/multi-kube.sh
 
 # Instrall awesome vim
 git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
@@ -37,11 +42,14 @@ sh ~/.vim_runtime/install_awesome_vimrc.sh
 # Install latest stable TF
 tfenv install
 
+# add auto completion
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
 # ohmyzsh plugins
-git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
-wget https://raw.githubusercontent.com/halfo/lambda-mod-zsh-theme/master/lambda-mod.zsh-theme -P ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/themes/
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-completions ~/.zsh/plugins/zsh-completions
+wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/colorize/colorize.plugin.zsh -P ~/.zsh/plugins/
 
 # replace zshrc
 cp zshrc ~/.zshrc

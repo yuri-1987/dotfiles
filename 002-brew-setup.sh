@@ -20,26 +20,26 @@ installBrewGuiPackages() {
 
 # Install brew
 echo -e "Installing brew\n"
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Add font repo
 brew tap homebrew/cask-fonts
 # Add terraspace repo
 brew tap boltops-tools/software
 
-# Install ZSH and ohmyzsh
-brew install zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # Install CLI tools
-clitools="fzf golang python3 yq jq gpg gsed kube-ps1 kubectl kubernetes-cli git vim curl wget kubectx pipenv\
+clitools="fzf golang python3 yq jq gpg gsed kubectl kubernetes-cli git vim curl wget kubectx pipenv\
   pre-commit terraform-docs tflint tfsec coreutils checkov terrascan infracost\
-  tfenv terraspace terraform-docs docker colima neofetch wireguard-tools htop ssh-copy-id diff-so-fancy"
+  tfenv terraspace terraform-docs docker colima neofetch wireguard-tools htop ssh-copy-id diff-so-fancy zsh starship"
 installBrewCliPackages "${clitools}"
 
 # Install GUI tools
-guitools="iterm2 firefox font-ibm-plex google-cloud-sdk font-hack vscodium bitwarden authy karabiner-elements zoom slack spotify spotify 1password"
+guitools="iterm2 firefox font-ibm-plex google-cloud-sdk font-hack bitwarden authy karabiner-elements zoom slack spotify 1password"
 installBrewGuiPackages "${guitools}"
 
 # Cleanup
 brew cleanup
+
+# Install ZSH and ohmyzsh
+# brew install zsh
+# sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
