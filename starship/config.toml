@@ -1,0 +1,92 @@
+format = """
+$kubernetes
+[∞](bold green) \
+$custom\
+$username\
+$hostname\
+$shlvl\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$package\
+$golang\
+$helm\
+$python\
+$terraform\
+$memory_usage\
+$env_var\
+$crystal\
+$cmd_duration\
+$line_break\
+$battery\
+$shell\
+$character"""
+
+right_format = """$time\
+$gcloud"""
+
+# Disable the blank line at the start of the prompt
+add_newline = false
+
+
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
+[[battery.display]]
+threshold = 30
+style = "bold red"
+
+[character]
+success_symbol = "[➜](bold green) "
+error_symbol = "[➜](bold red) "
+
+[gcloud]
+format = '[$symbol\[](bold purple)[ $region Ξ $project ]($style)[\]](bold purple)'
+style = "yellow"
+symbol = ""
+[gcloud.region_aliases]
+us-central1 = "us-c1"
+
+[hostname]
+ssh_only = false
+format =  "[$hostname](dimmed orange) "
+trim_at = "."
+disabled = true
+
+[username]
+style_user = "yellow bold"
+style_root = "black bold"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+[shlvl]
+disabled = false
+format = "$shlvl level(s) down"
+threshold = 2
+
+[directory]
+truncation_length = 5
+truncation_symbol = ""
+truncate_to_repo = false
+style = "bold purple"
+format = '[\[[$path](yellow)\]]($style)[$read_only]($read_only_style) '
+
+[git_commit]
+commit_hash_length = 5
+only_detached = false
+
+[kubernetes]
+format = '[\[ [Ξ](bold cyan) ](bold purple)[$context](red)[ \]](bold purple)'
+disabled = false
+symbol = ""
+
+[time]
+disabled = false
+format = '[\[[$time](yellow)\]]($style) '
+time_format = "%T"
+utc_time_offset = "+2"
+style = "bold purple"
