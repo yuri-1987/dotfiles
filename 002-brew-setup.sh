@@ -18,9 +18,17 @@ installBrewGuiPackages() {
   done
 }
 
-# Install brew
-echo -e "Installing brew\n"
-/bin/bash -c eval "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Install brew if needed
+# Check for Homebrew, install if we don't have it
+if test ! $(which brew); then
+    echo "Installing homebrew..."
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/$(whoami)/.zprofile
+fi
+
+# Update homebrew recipes
+brew update
 
 # Add font repo
 brew tap homebrew/cask-fonts
@@ -31,7 +39,7 @@ brew tap batchcorp/public
 
 # Install CLI tools
 clitools="fzf golang python3 sops yq jq gpg gsed kubectl kubernetes-cli git vim curl wget kubectx pipenv\
-  pre-commit terraform-docs tflint tfsec coreutils checkov terrascan infracost exa\
+  pre-commit terraform-docs tflint tfsec coreutils checkov terrascan infracost exa pyenv rbenv\
   tfenv terraspace terraform-docs docker colima neofetch wireguard-tools htop ssh-copy-id diff-so-fancy zsh starship plumber"
 installBrewCliPackages "${clitools}"
 

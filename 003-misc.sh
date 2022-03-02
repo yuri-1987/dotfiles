@@ -33,6 +33,7 @@ git config --global user.name "yuri-1987"
 git config --global user.email "27512519+yuri-1987@users.noreply.github.com"
 
 # handle multi kube context
+mkdir -p ~/.kube/kubeconfig.d
 cp misc/multi-kube.sh ~/.zsh/multi-kube.sh
 
 # Instrall awesome vim
