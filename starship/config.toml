@@ -1,4 +1,5 @@
 format = """
+$memory_usage
 $kubernetes
 [∞](bold green) \
 $custom\
@@ -15,7 +16,6 @@ $golang\
 $helm\
 $python\
 $terraform\
-$memory_usage\
 $env_var\
 $crystal\
 $cmd_duration\
@@ -90,3 +90,10 @@ format = '[\[[$time](yellow)\]]($style) '
 time_format = "%T"
 utc_time_offset = "+2"
 style = "bold purple"
+
+[memory_usage]
+disabled = false
+threshold = 2
+symbol = ">"
+style = "bold dimmed green"
+format = "$symbol [${ram}]($style)"

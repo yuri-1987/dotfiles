@@ -26,11 +26,13 @@ echo -e "Installing brew\n"
 brew tap homebrew/cask-fonts
 # Add terraspace repo
 brew tap boltops-tools/software
+# plumber
+brew tap batchcorp/public
 
 # Install CLI tools
-clitools="fzf golang python3 yq jq gpg gsed kubectl kubernetes-cli git vim curl wget kubectx pipenv\
-  pre-commit terraform-docs tflint tfsec coreutils checkov terrascan infracost\
-  tfenv terraspace terraform-docs docker colima neofetch wireguard-tools htop ssh-copy-id diff-so-fancy zsh starship"
+clitools="fzf golang python3 sops yq jq gpg gsed kubectl kubernetes-cli git vim curl wget kubectx pipenv\
+  pre-commit terraform-docs tflint tfsec coreutils checkov terrascan infracost exa\
+  tfenv terraspace terraform-docs docker colima neofetch wireguard-tools htop ssh-copy-id diff-so-fancy zsh starship plumber"
 installBrewCliPackages "${clitools}"
 
 # Install GUI tools

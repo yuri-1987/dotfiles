@@ -8,7 +8,11 @@ export STARSHIP_CONFIG=~/.starship/config.toml
 export STARSHIP_CACHE=~/.starship/cache
 
 # history size
-export HISTSIZE=2000
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=$HISTSIZE
+setopt SHARE_HISTORY
+setopt hist_ignore_all_dups
 
 # auto suggestion
 source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -29,13 +33,18 @@ source <(kubectl completion zsh)
 compdef __start_kubectl k
 source ~/.zsh/multi-kube.sh
 
+# Dir colors
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+export EXA_COLORS="hs_err_pid*=37;41;1"
+alias ll="exa -a --long"
+
 # autocomplete tab arrow navigation
 zstyle ':completion:*' menu select
 # case-insensitive completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # alias
-alias ll='ls -lah'
 alias k='kubectl'
 alias cat='ccat'
 alias history='history -E 1'
@@ -43,4 +52,17 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-eval "$(starship init zsh)" 
+# tfenv set to arm
+export TFENV_ARCH=arm64
+
+precmd() {
+  # sets the tab title to current dir
+  echo -ne "\e]1;${PWD##*/}\a"
+}
+
+# ruby
+eval "$(rbenv init - zsh)"
+# starship
+eval "$(starship init zsh)"
+# pyenv
+eval "$(pyenv init -)"
