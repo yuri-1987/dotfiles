@@ -42,10 +42,7 @@ sh ~/.vim_runtime/install_awesome_vimrc.sh
 # Install latest stable TF
 tfenv install
 
-# add auto completion
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
-
-# ohmyzsh plugins
+# zsh plugins
 git clone https://github.com/zsh-users/zsh-autosuggestions.git ~/.zsh/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-completions ~/.zsh/plugins/zsh-completions
