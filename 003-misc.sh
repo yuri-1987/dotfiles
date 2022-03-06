@@ -36,6 +36,9 @@ git config --global user.email "27512519+yuri-1987@users.noreply.github.com"
 mkdir -p ~/.kube/kubeconfig.d
 cp misc/multi-kube.sh ~/.zsh/multi-kube.sh
 
+mkdir -p ~/.starship/
+cp starship/config.toml ~/.starship/
+
 # Instrall awesome vim
 git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
 sh ~/.vim_runtime/install_awesome_vimrc.sh
